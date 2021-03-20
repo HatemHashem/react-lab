@@ -23,11 +23,24 @@ export class EventForm extends Component {
     this.setState({ newEvent: { ...this.state.newEvent, [key]: value } });
   }
 
+  resetForm(){
+    this.setState({newEvent : {
+      id: "",
+      name: "",
+      description: "",
+      location: "",
+      date: "",
+      hotel: "",
+      codeOfConduct: "",
+    }})
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state.newEvent);
     this.updateEvent("id", Date.now());
     this.setState({ events: this.state.events.concat(this.state.newEvent) });
+    this.resetForm();
     console.log(this.state.events);
   }
 
@@ -100,18 +113,34 @@ export class EventForm extends Component {
 
           <button>Add #{this.state.events.length + 1}</button>
         </form>
-        <ul>
-          {this.state.events.map((item) => (
-            <li>
-              <span>{item.name} </span>
-              <span>{item.description} </span>
-              <span>{item.location} </span>
-              <span>{item.date} </span>
-              <span>{item.hotel} </span>
-              <span>{item.codeOfConduct} </span>
-            </li>
+        <table className="table table-border">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>description</th>
+              <th>location</th>
+              <th>date</th>
+              <th>hotel</th>
+              <th>codeOfConduct</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.events.map((item) => (
+            <tr key={item.id}>
+              <td>{item.name} </td>
+              <td>{item.description} </td>
+              
+              <td> {item.location} </td>
+              
+              <td>{item.date} </td>
+              
+              <td>{item.hotel} </td>
+              
+              <td> {item.codeOfConduct} </td>
+            </tr>
           ))}
-        </ul>
+          </tbody>
+        </table>
       </div>
     );
   }
