@@ -6,7 +6,7 @@ export class HomePage extends Component{
     render() {
         return(
             // <Header></Header>
-            <EventForm></EventForm>
             
+            <EventForm></EventForm>
         );}
 }
