@@ -1,11 +1,11 @@
 
 
-function Ticket() {
+function Ticket({ticket,onClick}) {
     return (
         <div>
-            <input type="text" name=""></input>
-            <input type="text" name=""></input>
-            <button>buy ticket</button>
+            <textarea  name="">{ticket.ticketName}</textarea>
+            <textarea  name="">{ticket.ticketPrice}</textarea>
+            <button onClick={onClick}>buy ticket</button>
         </div>
     )
 }
